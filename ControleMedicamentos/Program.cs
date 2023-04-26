@@ -47,91 +47,66 @@ namespace ControleMedicamentos {
 
                 if (opcao == "0") {
                     break;
-                } else if (opcao == "1") {
+
+                }
+                else if (opcao == "1") {
 
                     string opcaoCaixa = telaFuncionario.ApresentarMenu();
 
-                    if (opcaoCaixa == "1") {
-                        telaFuncionario.Inserir();
-                    } else if (opcaoCaixa == "2") {
-                        telaFuncionario.Visualizar();
-                    } else if (opcaoCaixa == "3") {
-                        telaFuncionario.Editar();
-                    } else if (opcaoCaixa == "4") {
-                        telaFuncionario.Deletar();
-                    }
+                    if (opcaoCaixa == "1") telaFuncionario.Inserir();
+                    else if (opcaoCaixa == "2") telaFuncionario.Visualizar();
+                    else if (opcaoCaixa == "3") telaFuncionario.Editar();
+                    else if (opcaoCaixa == "4") telaFuncionario.Deletar();
                     continue;
-                } else if (opcao == "2") {
 
+                } 
+                else if (opcao == "2") {
 
                     string opcaoPaciente = telaPaciente.ApresentarMenu();
 
-                    if (opcaoPaciente == "1") {
-                        telaPaciente.Inserir();
-                    } else if (opcaoPaciente == "2") {
-                        telaPaciente.Visualizar();
-                    } else if (opcaoPaciente == "3") {
-                        telaPaciente.Editar();
-                    } else if (opcaoPaciente == "4") {
-                        telaPaciente.Deletar();
-                    }
+                    if (opcaoPaciente == "1") telaPaciente.Inserir(); 
+                    else if (opcaoPaciente == "2") telaPaciente.Visualizar(); 
+                    else if (opcaoPaciente == "3") telaPaciente.Editar(); 
+                    else if (opcaoPaciente == "4") telaPaciente.Deletar();
                     continue;
 
-                } else if (opcao == "3") {
+                } 
+                else if (opcao == "3") {
 
                     string opcaoFornecedor = telaFornecedor.ApresentarMenu();
 
-                    if (opcaoFornecedor == "1") {
-                        telaFornecedor.Inserir();
-                    } else if (opcaoFornecedor == "2") {
-                        telaFornecedor.Visualizar();
-                    } else if (opcaoFornecedor == "3") {
-                        telaFornecedor.Editar();
-                    } else if (opcaoFornecedor == "4") {
-                        telaFornecedor.Deletar();
-                    }
+                    if (opcaoFornecedor == "1") telaFornecedor.Inserir();
+                    else if (opcaoFornecedor == "2") telaFornecedor.Visualizar();
+                    else if (opcaoFornecedor == "3") telaFornecedor.Editar();
+                    else if (opcaoFornecedor == "4") telaFornecedor.Deletar();
                     continue;
                 }
-
                 else if (opcao == "4") {
 
                     string opcaoMedicamento = telaMedicamento.ApresentarMenu();
 
-                    if (opcaoMedicamento == "1") {
-                        telaMedicamento.Inserir();
-                    } else if (opcaoMedicamento == "2") {
-                        telaMedicamento.Visualizar();
-                    } else if (opcaoMedicamento == "3") {
-                        telaMedicamento.Editar();
-                    } else if (opcaoMedicamento == "4") {
-                        telaMedicamento.Deletar();
-                    }
+                    if (opcaoMedicamento == "1") telaMedicamento.Inserir();
+                    else if (opcaoMedicamento == "2") telaMedicamento.Visualizar();
+                    else if (opcaoMedicamento == "3") telaMedicamento.Editar();
+                    else if (opcaoMedicamento == "4") telaMedicamento.Deletar();    
                     continue;
                 } 
-
                 else if (opcao == "5") {
 
                     string opcaoReposicao = telaReposicao.ApresentarMenu();
 
-                    if (opcaoReposicao == "1") {
-                        telaReposicao.Inserir();
-                    } else if (opcaoReposicao == "2") {
-                        telaReposicao.Visualizar();
-                    }
+                    if (opcaoReposicao == "1") telaReposicao.Inserir(); 
+                    else if (opcaoReposicao == "2") telaReposicao.Visualizar();
                     continue;
                 } 
                 else if (opcao == "6") {
 
                     string opcaoRequisicao = telaRequisicao.ApresentarMenu();
 
-                    if (opcaoRequisicao == "1") {
-                        telaRequisicao.Inserir();
-                    } else if (opcaoRequisicao == "2") {
-                        telaRequisicao.Visualizar();
-                    }
+                    if (opcaoRequisicao == "1") telaRequisicao.Inserir(); 
+                    else if (opcaoRequisicao == "2") telaRequisicao.Visualizar();
                     continue;
                 }
-
                 
                 }
 
