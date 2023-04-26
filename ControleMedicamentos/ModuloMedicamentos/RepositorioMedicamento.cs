@@ -5,56 +5,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ControleMedicamentos.Compartilhado;
 
 namespace ControleMedicamentos.ModuloMedicamentos {
-    public class RepositorioMedicamento {
-        ArrayList listaMedicamento;
+    public class RepositorioMedicamento:RepositorioBase {
 
-        public RepositorioMedicamento(ArrayList listaMedicamento) {
-            this.listaMedicamento = listaMedicamento;
+        public RepositorioMedicamento(ArrayList lista) {
+            listaRegistros = lista;
         }
-        int contadorMedicamento = 0;
-        public void Inserir(Medicamento medicamento) {
+        public override Medicamento SelecionarPorId(int id) {
 
-            contadorMedicamento++;
-            medicamento.id = contadorMedicamento;
-            listaMedicamento.Add(medicamento);
-        }
-
-        public ArrayList SelecionarTodos() {
-            return listaMedicamento;
-        }
-
-        internal void Editar(int id, Medicamento medicamentoAtualizado) {
-
-            Medicamento medicamentoSelecionado = SelecionarPorId(id);
-            medicamentoSelecionado.nome = medicamentoAtualizado.nome;
-            medicamentoSelecionado.descricao = medicamentoAtualizado.descricao;
-            medicamentoSelecionado.fornecedor = medicamentoAtualizado.fornecedor;
-            medicamentoSelecionado.quantidade = medicamentoAtualizado.quantidade;
-        }
-
-        public void Excluir(int id) {
-
-            Medicamento fornecedorSelecionado = SelecionarPorId(id);
-            listaMedicamento.Remove(fornecedorSelecionado);
-        }
-
-        public Medicamento SelecionarPorId(int id) {
-            Medicamento fornecedorSelecionado = null;
-            foreach (Medicamento f in listaMedicamento) {
-                if (f.id == id) {
-                    fornecedorSelecionado = f;
-                    break;
-                }
-            }
-
-            return fornecedorSelecionado;
+            return (Medicamento)base.SelecionarPorId(id);
+            
         }
 
         public ArrayList MedicamentosFaltando() {
             ArrayList listaFaltas = new ArrayList();
-            foreach (Medicamento m in listaMedicamento) {
+            foreach (Medicamento m in listaRegistros) {
                 if (m.quantidade < 10) {
                     listaFaltas.Add(m);
                 }

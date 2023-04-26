@@ -1,16 +1,12 @@
 ﻿using ControleMedicamentos.ModuloFornecedor;
 using ControleMedicamentos.ModuloFuncionario;
 using ControleMedicamentos.ModuloMedicamentos;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using ControleMedicamentos.Compartilhado;
 
 namespace ControleMedicamentos.ModuloReposicao {
-    internal class TelaReposicao:Tela {
+    internal class TelaReposicao:TelaBase {
         RepositorioReposicao repositorioReposicao;
         RepositorioMedicamento repositorioMedicamento;
         RepositorioFuncionario repositorioFuncionario;
@@ -23,55 +19,39 @@ namespace ControleMedicamentos.ModuloReposicao {
             this.repositorioFuncionario = repositorioFuncionario;
             this.telaFuncionario = telaFuncionario;
             this.telaMedicamento = telaMedicamento;
+            this.repositorioBase = repositorioReposicao;
         }
 
-        public string ApresentarMenu() {
+        public override string ApresentarMenu() {
             Console.Clear();
-            Console.WriteLine("1 - Solicitar Reposição");
-            Console.WriteLine("2 - Visualizar Solicitações");
-            
+            Console.WriteLine("1 - Solicitar Requisição");
+            Console.WriteLine("2 - Visualizar Requisições");
+
             Console.WriteLine("0 - Voltar");
 
             string opcao = Console.ReadLine();
             return opcao;
         }
-        public void Inserir() {
 
-            MostrarCabecalho("Cadastro de Solicitações: ", "Abrindo uma solicitação de Reposição...");
-            Reposicao reposicao = ObterReposicao();
-            repositorioReposicao.Inserir(reposicao);
-            MostrarMensagem("Reposição feita com sucesso!", ConsoleColor.Green);
-
-        }
-        public void Visualizar() {
-            Console.WriteLine("Reposições Abertas: \n");
-            ArrayList lista = repositorioReposicao.SelecionarTodos();
-            if (lista.Count == 0) {
-                MostrarMensagem("Não há Reposições cadastradss!", ConsoleColor.DarkYellow);
-                return;
-            }
-            MostrarTabela(lista);
-        }
-        
-        private void MostrarTabela(ArrayList lista) {
+        protected override void MostrarTabela(ArrayList listaReposicao) {
             Console.WriteLine("{0,-5} |{1,-20} |{2,-20}|{3,-30} |", "ID", "Medicamento", "Quantidade", "Funcionário");
             Console.WriteLine("----------------------------------------------------------------------------------");
-            foreach (Reposicao r in lista) {
+            foreach (Reposicao r in listaReposicao) {
                 Console.WriteLine("{0,-5} |{1,-20} |{2,-20}|{3,-30} |", r.id, r.medicamento.nome, r.quantidade, r.funcionario.nome);
                 Console.WriteLine("----------------------------------------------------------------------------------");
             }
             Console.ReadLine();
         }
-        private Reposicao ObterReposicao() {
+        protected override Reposicao ObterRegistro() {
 
             telaFuncionario.Visualizar();
-            Console.WriteLine("Digite o ID do Funcionário: ");
+            Console.Write("Digite o ID do Funcionário: ");
             int id = int.Parse(Console.ReadLine());
             Funcionario funcionario = repositorioFuncionario.SelecionarPorId(id);
 
             ArrayList medicamentosFaltando = repositorioMedicamento.MedicamentosFaltando();
-            telaMedicamento.MostrarTabela(medicamentosFaltando);
-            Console.WriteLine("Digite o ID do Medicamento: ");
+            telaMedicamento.MostrarMedicamentosFaltando(medicamentosFaltando);
+            Console.Write("Digite o ID do Medicamento: ");
             int id2 = int.Parse(Console.ReadLine());
             Medicamento medicamento = repositorioMedicamento.SelecionarPorId(id2);
 

@@ -5,17 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ControleMedicamentos.Compartilhado;
 
 namespace ControleMedicamentos.ModuloReposicao {
-    public class RepositorioReposicao {
-        ArrayList listaReposicao;
-
-        public RepositorioReposicao(ArrayList listaReposicao) {
-            this.listaReposicao = listaReposicao;
-        }
-
-        public ArrayList SelecionarTodos() {
-            return listaReposicao;
+    public class RepositorioReposicao:RepositorioBase {
+       
+        public RepositorioReposicao(ArrayList lista) {
+            listaRegistros = lista;
         }
 
         int contadorReposicao = 0;
@@ -23,7 +19,7 @@ namespace ControleMedicamentos.ModuloReposicao {
 
             contadorReposicao++;
             reposicao.id = contadorReposicao;
-            listaReposicao.Add(reposicao);
+            listaRegistros.Add(reposicao);
         }
 
     }

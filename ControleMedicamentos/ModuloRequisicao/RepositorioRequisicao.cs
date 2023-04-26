@@ -5,18 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ControleMedicamentos.Compartilhado;
 
 namespace ControleMedicamentos.ModuloRequisicao {
-    public class RepositorioRequisicao {
+    public class RepositorioRequisicao:RepositorioBase {
 
-        ArrayList listaRequisicao;
-
-        public RepositorioRequisicao(ArrayList listaRequisicao) {
-            this.listaRequisicao = listaRequisicao;
-        }
-
-        public ArrayList SelecionarTodos() {
-            return listaRequisicao;
+        public RepositorioRequisicao(ArrayList lista) {
+            listaRegistros = lista;
         }
 
         int contadorRequisicao = 0;
@@ -24,7 +19,7 @@ namespace ControleMedicamentos.ModuloRequisicao {
 
             contadorRequisicao++;
             requisicao.id = contadorRequisicao;
-            listaRequisicao.Add(requisicao);
+            listaRegistros.Add(requisicao);
         }
     }
 }

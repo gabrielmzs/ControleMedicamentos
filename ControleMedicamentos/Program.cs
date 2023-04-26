@@ -20,11 +20,17 @@ namespace ControleMedicamentos {
             CadastrarAutomatico();
 
             TelaFuncionario telaFuncionario = new TelaFuncionario(repositorioFuncionario);
+            telaFuncionario.nomeEntidade = "Funcionário";
             TelaFornecedor telaFornecedor = new TelaFornecedor(repositorioFornecedor);
+            telaFornecedor.nomeEntidade = "Fornecedor";
             TelaPaciente telaPaciente = new TelaPaciente(repositorioPaciente);
+            telaPaciente.nomeEntidade = "Paciente";
             TelaMedicamento telaMedicamento = new TelaMedicamento(repositorioMedicamento, repositorioFornecedor, telaFornecedor);
+            telaMedicamento.nomeEntidade = "Medicamento";
             TelaReposicao telaReposicao = new TelaReposicao(repositorioReposicao, repositorioMedicamento, repositorioFuncionario, telaFuncionario, telaMedicamento);
+            telaReposicao.nomeEntidade = "Reposição";
             TelaRequisicao telaRequisicao = new TelaRequisicao(repositorioRequisicao, repositorioMedicamento, repositorioFuncionario, repositorioPaciente, telaFuncionario, telaMedicamento, telaPaciente);
+            telaRequisicao.nomeEntidade = "Requisição";
 
             while (true) {
                 Console.Clear();
